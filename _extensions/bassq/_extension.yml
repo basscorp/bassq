@@ -21,3 +21,9 @@ contributes:
       fig-width:  7.5
       fig-height: 4.3
       fig-dpi: 300
+    docx:
+      lang: de
+      toc: true
+      fig-width:  7.5
+      fig-height: 4.3
+      fig-dpi: 300
