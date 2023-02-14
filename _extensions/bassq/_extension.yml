@@ -5,9 +5,13 @@ quarto-required: ">=1.2.0"
 contributes:
   formats:
     html:
+      lang: de
+      date-format: "DD. MMMM YYYY"
       toc: true
       toc-location: left
       toc-title: Inhalt
+      published-title: "Stand"
+      author-title: "Autoren"
       number-sections: true
       embed-resources: true
       theme: [cosmo, custom.scss]
