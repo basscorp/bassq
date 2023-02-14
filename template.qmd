@@ -29,7 +29,7 @@ pfad_arbeit <- "G:/11_Datensaetze/02_Projekte_Sekundaerdaten/"
 ```
 
 
-# R Markdown syntax
+# Markdown syntax
 Infos: [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
 
 `**fett**`: **fett**
