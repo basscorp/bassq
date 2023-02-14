@@ -6,3 +6,13 @@
 /*-- scss:rules --*/
 
 /* TODO: Provide custom CSS rules */
+.quarto-title-block .quarto-title-banner {
+  background-image: url("https://www.buerobass.ch/typo3conf/ext/nctemplate/Resources/Public/Images/Bass_Logo.png");
+  background-size: 35px;
+  background-color: #ffffff;
+  color: #000000;
+  background-position: right;
+  background-repeat: no-repeat;
+  padding-right: 20px;
+  background-origin: content-box;
+}

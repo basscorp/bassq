@@ -6,11 +6,96 @@ author: Severin Bischof
 date: last-modified
 ---
 
-## Introduction
+```{r}
+library(data.table)
+library(magrittr)
+library(ggplot2)
+library(bass)
+```
 
-*TODO* Create an example file that demonstrates the formatting and features of your format.fff
 
-## More Information
 
-You can learn more about controlling the appearance of HTML output here: <https://quarto.org/docs/output-formats/html-basics.html>
+```{r load_data}
+### Pfade (security policy)
+pfad_rohdaten <- "G:/11_Datensaetze/01_Rohdaten_Sekundaerdaten/90_Mehrfachdatensaetze/"
+pfad_arbeit <- "G:/11_Datensaetze/02_Projekte_Sekundaerdaten/"
+
+### Einlesen
+# df <- data.table::fread("XXX.csv", nThread = 6L)
+# setkey(df, id)
+
+### Variablennamen vereinheitlichen
+# names(df) <- tolower(names(df))
+```
+
+
+# R Markdown syntax
+Infos: [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/)
+
+`**fett**`: **fett**
+
+`*kursiv*`: *kursiv*
+
+`Subscript~t-1~`: Subscript~t-1~
+
+`Superscript^2`: Superscript^2
+
+``*nicht formatiert*``: `*nicht formatiert*`
+
+`[TextLink](https://www.buerobass.ch)`: [TextLink](https://www.buerobass.ch)
+
+`^[Das ist eine Fussnote.]`: ^[Das ist eine Fussnote.]
+
+Liste:
+
+1. eins
+2. zwei
+3. drei
+  - ohne Nummerierung
+  - ohne Nummerierung
+  - ohne Nummerierung
+  
+Zitate:
+
+> "Nur wer die Zahlen und Fakten kennt, kann richtig entscheiden. Das Büro für arbeits- und sozialpolitische Studien BASS liefert seit 27 Jahren fundierte Grundlagen zum Handeln."
+>
+> --- BASS AG
+
+LaTeX Gleichungen
+
+$f(k) = {n \choose k} p^{k} (1-p)^{n-k}$
+
+
+# Code einfügen
+```{r cars}
+summary(cars)
+```
+
+
+## Tabelle
+Ohne Formatierung
+```{r}
+with(mpg, table( cyl, year)) %>% addmargins() 
+```
+
+Tabelle mit gtsummary
+```{r}
+ library("gtsummary")
+ tbl_summary(as.data.table(mpg)[, .(year, cyl)], by = year, label = list(cyl = "Number of cylinders")) %>% 
+   add_overall()
+```
+
+
+## Abbildung
+```{r abb1}
+bass_theme(colors = bass_colors("dunkelrot", "rosa"), reverse = TRUE)
+ggplot(mpg, aes(cty)) +
+  geom_density(aes(fill=factor(cyl), color=factor(cyl)), alpha=0.8) + 
+  labs(title="Density plot", 
+       subtitle="City Mileage Grouped by Number of cylinders",
+       caption="Source: mpg",
+       x="City Mileage",
+       fill = element_blank(),
+       color = element_blank())
+```
 
